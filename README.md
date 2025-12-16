@@ -14,6 +14,8 @@ Execute both commands.
 <br>
 **-> pnpm run prepare**
 
+***Important! In order to be able to run this project, you will have to add the .env file to the root directory of this project. Creat a .env file and add the key VITE_X_API_KEY with the value provided in the test description (87909...), and the key VITE_API_URL with the api url: ...es.onrender.com/products
+
 ## **--- Running Dev server ---**
 
 **-> pnpm start**
