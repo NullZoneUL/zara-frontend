@@ -1,7 +1,7 @@
-import App from "@components/app";
-import getComponentFromRoute from "./getComponentsFromRoute";
-import { useParams } from "react-router-dom";
-import { RoutesType } from "@routes/pageConfig";
+import App from '@components/app';
+import getComponentFromRoute from './getComponentsFromRoute';
+import { useParams } from 'react-router-dom';
+import { RoutesType } from '@routes/pageConfig';
 
 const RouterManager = ({ route }: { route: RoutesType }) => {
   const Page = getComponentFromRoute(route);
