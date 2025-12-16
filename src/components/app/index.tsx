@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { ScrollRestoration } from "react-router-dom";
+import { ReactNode } from 'react';
+import { ScrollRestoration } from 'react-router-dom';
 
 interface AppInterface {
   children: ReactNode;

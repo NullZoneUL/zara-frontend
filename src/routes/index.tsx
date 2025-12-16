@@ -1,10 +1,10 @@
-import RouterManager from "@components/router";
-import { createBrowserRouter } from "react-router-dom";
-import { Routes } from "./pageConfig";
+import RouterManager from '@components/router';
+import { createBrowserRouter } from 'react-router-dom';
+import { Routes } from './pageConfig';
 
 const browserRouter = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RouterManager route={Routes.index} />,
     errorElement: <RouterManager route={Routes.index} />,
   },
@@ -13,7 +13,7 @@ const browserRouter = createBrowserRouter([
     element: <RouterManager route={Routes.index} />,
   },
   {
-    path: "*",
+    path: '*',
     element: <RouterManager route={Routes.error} />,
   },
 ]);

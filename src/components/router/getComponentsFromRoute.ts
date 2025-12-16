@@ -1,7 +1,7 @@
-import Home from "@components/home";
-import PageNotFound from "@components/page-not-found";
-import { ReactElement } from "react";
-import { Routes } from "@routes/pageConfig";
+import Home from '@components/home';
+import PageNotFound from '@components/page-not-found';
+import { ReactElement } from 'react';
+import { Routes } from '@routes/pageConfig';
 
 interface ComponentsInterface {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
