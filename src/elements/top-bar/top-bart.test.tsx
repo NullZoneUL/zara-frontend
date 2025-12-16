@@ -1,6 +1,6 @@
+import TopBar from '.';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import TopBar from '.';
 
 describe('TopBar', () => {
   const renderComponent = () =>

@@ -8,11 +8,11 @@ interface PhoneItemInterface {
 }
 
 const PhoneItem = ({ itemInfo }: PhoneItemInterface) => {
-  const { brand, name, basePrice, imageUrl, id } = itemInfo;
+  const { brand, name, basePrice, imageUrl } = itemInfo;
 
   return (
     <Link
-      aria-label={Translations.go_product}
+      aria-label={`${Translations.go_product} ${brand} ${name}`}
       to={`/${Routes.index}`}
       className="phone-item-link-container"
     >
@@ -21,8 +21,13 @@ const PhoneItem = ({ itemInfo }: PhoneItemInterface) => {
         <div className="phone-info-container">
           <h3>{brand}</h3>
           <div className="phone-name-price">
-            <h2 className="phone-name">{name}</h2>
-            <h2 className="phone-price">{basePrice}</h2>
+            <h4 className="phone-name">{name}</h4>
+            <h4
+              className="phone-price"
+              aria-label={`${Translations.price}: ${basePrice}`}
+            >
+              {basePrice}
+            </h4>
           </div>
         </div>
       </div>
