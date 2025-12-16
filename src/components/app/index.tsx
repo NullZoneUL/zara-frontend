@@ -1,6 +1,7 @@
 import TopBar from '@elements/top-bar';
 import { ReactNode, createContext, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
+import './_style.scss';
 
 interface AppInterface {
   children: ReactNode;

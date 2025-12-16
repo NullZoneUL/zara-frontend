@@ -1,0 +1,5 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-list-container {
+  margin: to-rem($spacer-3xl) to-rem($spacer-md) 0 to-rem($spacer-md);
+}

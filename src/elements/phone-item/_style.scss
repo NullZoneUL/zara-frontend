@@ -1,0 +1,47 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-item-link-container {
+  text-decoration: none;
+  text-transform: uppercase;
+
+  .phone-item-container {
+    border: 0.5px solid var(--black);
+
+    > img {
+      padding: to-rem($spacer-md);
+    }
+
+    .phone-info-container {
+      margin: to-rem($spacer-xs) to-rem($spacer-md) to-rem($spacer-md)
+        to-rem($spacer-md);
+
+      h3 {
+        color: var(--grey);
+        font-size: $font-size-xxxs;
+        font-weight: lighter;
+      }
+
+      .phone-name-price {
+        position: relative;
+        display: flex;
+        margin-top: to-rem($spacer-xxs);
+
+        h2 {
+          color: var(--black);
+          display: inline-block;
+          font-size: $font-size-xxs;
+          font-weight: lighter;
+
+          &.phone-price {
+            position: absolute;
+            right: 0;
+
+            &::after {
+              content: ' EUR';
+            }
+          }
+        }
+      }
+    }
+  }
+}

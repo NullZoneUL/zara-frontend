@@ -4,5 +4,7 @@
   "logo": "MBST",
   "cart": "Cart",
   "go_cart": "Go to cart",
-  "cart_items": "items in cart"
+  "cart_items": "items in cart",
+  "go_product": "Go to product info page",
+  "request_error": "There was an error trying to retrieve the phone list. Check your .env variables."
 }
