@@ -9,6 +9,7 @@
 
     > img {
       padding: to-rem($spacer-md);
+      margin: 0 auto;
     }
 
     .phone-info-container {
@@ -43,5 +44,35 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-item-link-container {
+    display: inline-block;
+
+    .phone-item-container {
+      width: to-rem(250);
+
+      > img {
+        height: to-rem(210);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 849px) {
+  .phone-item-link-container .phone-item-container {
+    width: to-rem(377);
+
+    > img {
+      height: to-rem(290);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-item-link-container .phone-item-container {
+    width: to-rem(342);
   }
 }

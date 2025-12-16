@@ -1,5 +1,23 @@
 @use '../../styles/abstract/abstract' as *;
 
 .phone-list-container {
-  margin: to-rem($spacer-3xl) to-rem($spacer-md) 0 to-rem($spacer-md);
+  margin: to-rem($spacer-3xl) to-rem($spacer-md) to-rem($spacer-md)
+    to-rem($spacer-md);
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-list-container {
+    margin: to-rem($spacer-huge) to-rem($spacer-3xl) to-rem($spacer-3xl)
+      to-rem($spacer-3xl);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-list-container {
+    margin: to-rem($spacer-huge) to-rem($spacer-giant2) to-rem($spacer-giant2)
+      to-rem($spacer-giant2);
+  }
 }
