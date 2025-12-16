@@ -1,0 +1,28 @@
+@use './size-key' as *;
+@use '../functions/to-rem' as *;
+
+$font-size-hd-xl: to-rem($size-key * 24); // 96
+$font-size-hd-l: to-rem($size-key * 16); // 64
+$font-size-hd-m-l: to-rem($size-key * 12); // 48
+$font-size-hd-m: to-rem($size-key * 10); // 40
+$font-size-hd-s: to-rem($size-key * 8); // 32
+$font-size-hd-xs: to-rem($size-key * 6); // 24
+
+$font-size-l: to-rem($size-key * 5); // 20
+$font-size-m: to-rem($size-key * 4.5); // 18
+$font-size-s: to-rem($size-key * 4); // 16
+$font-size-xs: to-rem($size-key * 3.5); // 14
+$font-size-xxs: to-rem($size-key * 3); // 12
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+$line-height-l: 1.6;
+$line-height-m: 1.5;
+$line-height-s: 1.4;
+$line-height-xs: 1.2;
+
+$font-size-base: $font-size-s;
+$font-weight-base: $font-weight-normal;
+$line-height-base: $line-height-xs;
+$letter-spacing-base: 0;

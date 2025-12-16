@@ -1,0 +1,21 @@
+@use './size-key' as *;
+@use '../functions/to-rem.scss' as *;
+
+$spacer-t: $size-key * 0.5; // 2
+$spacer-xxs: $size-key * 1; // 4
+$spacer-xxs2: $size-key * 1.5; // 6
+$spacer-xs: $size-key * 2; // 8
+$spacer-sm: $size-key * 3; // 12
+
+$spacer-md: $size-key * 4; // 16
+$spacer-md2: $size-key * 4.5; // 18
+$spacer-lg: $size-key * 5; // 20
+$spacer-xl: $size-key * 6; // 24
+
+$spacer-xxl: $size-key * 8; // 32
+$spacer-3xl: $size-key * 10; // 40
+$spacer-4xl: $size-key * 12; // 48
+
+$spacer-huge: $size-key * 16; // 64
+$spacer-giant: $size-key * 20; // 80
+$spacer-giant2: $size-key * 24; // 96
