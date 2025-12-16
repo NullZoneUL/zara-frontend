@@ -1,17 +1,14 @@
 // Default phone list request function
 export const requestPhoneList = async (
-  limit: number,
-  offset: number,
+  limit?: number,
+  offset?: number,
   search?: string,
 ): Promise<PhoneList> => {
   const url = new URL(import.meta.env.VITE_API_URL);
 
-  url.searchParams.set('limit', limit.toString());
-  url.searchParams.set('offset', offset.toString());
-
-  if (search) {
-    url.searchParams.set('search', search);
-  }
+  limit && url.searchParams.set('limit', limit.toString());
+  offset && url.searchParams.set('offset', offset.toString());
+  search && url.searchParams.set('search', search);
 
   const response = await fetch(url.toString(), {
     headers: {
