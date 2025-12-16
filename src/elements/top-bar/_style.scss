@@ -1,0 +1,41 @@
+@use '../../styles/abstract/abstract' as *;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--white);
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    a {
+      display: inline-block;
+    }
+
+    .top-bar-logo {
+      margin: to-rem($spacer-xl2) to-rem($spacer-md);
+    }
+
+    .top-bar-cart {
+      right: 0;
+      position: absolute;
+      margin-right: to-rem($spacer-md);
+      text-decoration: none;
+
+      img {
+        display: inline-block;
+        margin-right: to-rem($spacer-xs);
+      }
+
+      span {
+        vertical-align: top;
+        user-select: none;
+        color: var(--black);
+        font-size: $font-size-s;
+      }
+    }
+  }
+}
