@@ -1,3 +1,4 @@
+import TopBar from '@elements/top-bar';
 import { ReactNode, createContext, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ const App = ({ children }: AppInterface) => {
     <PhoneListContext.Provider
       value={{ list: phoneList, setList: setPhoneList }}
     >
+      <TopBar />
       <main className="page-container">{children}</main>
       <ScrollRestoration />
     </PhoneListContext.Provider>
