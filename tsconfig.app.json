@@ -28,7 +28,8 @@
       "@elements/*": ["src/elements/*"],
       "@assets/*": ["src/assets/*"],
       "@routes/*": ["src/routes/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"]
     }
   },
   "include": ["src"]
