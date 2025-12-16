@@ -1,25 +1,41 @@
-import { useEffect, useContext } from 'react';
+import PhoneItem from '@elements/phone-item';
+import Translations from '@assets/languages/export';
+import { useEffect, useState } from 'react';
 import { requestPhoneList } from '@api/client';
-import { PhoneListContext } from '@components/app';
+import './_style.scss';
 
 const Home = () => {
-  const { setList } = useContext(PhoneListContext);
+  const [phoneList, setPhoneList] = useState<PhoneList>();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getPhoneList = async () => {
       try {
-        const phoneList = await requestPhoneList(20, 0);
-        setList(phoneList);
+        const phoneList_ = await requestPhoneList(20, 0);
+        setPhoneList(phoneList_);
       } catch (e) {
-        console.log(
-          'There was an error trying to retrieve the phone list. Check your .env variables.',
-        );
+        console.log(Translations.request_error, e);
+        setError(Translations.request_error);
+      } finally {
+        setLoading(false);
       }
     };
     getPhoneList();
   }, []);
 
-  return <p>Live Home</p>;
+  return (
+    <section
+      aria-label={Translations.phone_list}
+      className="phone-list-container"
+    >
+      {loading && <p>{Translations.loading_phone_list}</p>}
+      {error && <p role="alert">{error}</p>}
+      {phoneList?.map((phone, index) => (
+        <PhoneItem itemInfo={phone} key={`PHONE_ITEM_${phone.id}_${index}`} />
+      ))}
+    </section>
+  );
 };
 
 export default Home;

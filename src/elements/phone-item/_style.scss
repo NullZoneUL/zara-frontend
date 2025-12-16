@@ -1,0 +1,78 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-item-link-container {
+  text-decoration: none;
+  text-transform: uppercase;
+
+  .phone-item-container {
+    border: 0.5px solid var(--black);
+
+    > img {
+      padding: to-rem($spacer-md);
+      margin: 0 auto;
+    }
+
+    .phone-info-container {
+      margin: to-rem($spacer-xs) to-rem($spacer-md) to-rem($spacer-md)
+        to-rem($spacer-md);
+
+      h3 {
+        color: var(--grey);
+        font-size: $font-size-xxxs;
+        font-weight: lighter;
+      }
+
+      .phone-name-price {
+        position: relative;
+        display: flex;
+        margin-top: to-rem($spacer-xxs);
+
+        h4 {
+          color: var(--black);
+          display: inline-block;
+          font-size: $font-size-xxs;
+          font-weight: lighter;
+
+          &.phone-price {
+            position: absolute;
+            right: 0;
+
+            &::after {
+              content: ' EUR';
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-item-link-container {
+    display: inline-block;
+
+    .phone-item-container {
+      width: to-rem(250);
+
+      > img {
+        height: to-rem(210);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 849px) {
+  .phone-item-link-container .phone-item-container {
+    width: to-rem(377);
+
+    > img {
+      height: to-rem(290);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-item-link-container .phone-item-container {
+    width: to-rem(342);
+  }
+}

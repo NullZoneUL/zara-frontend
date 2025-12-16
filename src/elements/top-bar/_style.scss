@@ -39,3 +39,27 @@ header {
     }
   }
 }
+
+@media screen and (min-width: $tabletSize) {
+  header nav {
+    .top-bar-logo {
+      margin: to-rem($spacer-xl2) to-rem($spacer-3xl);
+    }
+
+    .top-bar-cart {
+      margin-right: to-rem($spacer-3xl);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  header nav {
+    .top-bar-logo {
+      margin: to-rem($spacer-xl2) to-rem($spacer-giant2);
+    }
+
+    .top-bar-cart {
+      margin-right: to-rem($spacer-giant2);
+    }
+  }
+}
