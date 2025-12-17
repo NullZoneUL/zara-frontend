@@ -35,20 +35,26 @@ const SearchEngine = ({ numResults, onInput }: SearchEngineProps) => {
 
   return (
     <form className="search-engine-container" role="search">
+      <label htmlFor="search-input" className="sr-only">
+        {Translations.search_placeholder}
+      </label>
       <input
+        id="search-input"
         type="text"
         onInput={onInput_}
         placeholder={Translations.search_placeholder}
         ref={inputRef}
+        aria-describedby="search-results"
       />
       <button
         className={`search-clear-button ${isTyping ? 'search-clear-button-show' : ''}`}
         onClick={clearInput}
         type="button"
+        aria-label={Translations.clean_search}
       >
-        <img src={Close} alt={Translations.clean_search} />
+        <img src={Close} alt="" aria-hidden="true" />
       </button>
-      <span aria-live="polite" className="sg-num-results">
+      <span aria-live="polite" className="sg-num-results" id="search-results">
         {`${numResults} ${Translations.results}`}
       </span>
     </form>

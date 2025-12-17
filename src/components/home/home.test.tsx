@@ -26,32 +26,39 @@ const mockPhones = [
 
 describe('Home component', () => {
   beforeEach(() => {
-    (requestPhoneList as jest.Mock).mockResolvedValue(mockPhones);
+    jest.clearAllMocks();
   });
 
-  it('renders phone list section landmark', async () => {
+  it('renders loading state initially', () => {
+    (requestPhoneList as jest.Mock).mockResolvedValueOnce(mockPhones);
+
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>,
     );
 
-    const section = await screen.findByRole('region', { name: /Phone list/i });
+    expect(screen.getByText(/loading phone list/i)).toBeInTheDocument();
+  });
+
+  it('renders phone list when request succeeds', async () => {
+    (requestPhoneList as jest.Mock).mockResolvedValueOnce(mockPhones);
+
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const section = await screen.findByRole('region', {
+      name: /phone list/i,
+    });
+
     expect(section).toBeInTheDocument();
     expect(await screen.findByText('Apple')).toBeInTheDocument();
     expect(await screen.findByText('Samsung')).toBeInTheDocument();
-  });
 
-  it('shows loading state initially', async () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>,
-    );
-
-    expect(
-      await screen.findByText(/Loading phone list.../i),
-    ).toBeInTheDocument();
+    expect(requestPhoneList).toHaveBeenCalledWith(20, 0, '');
   });
 
   it('renders error message when request fails', async () => {

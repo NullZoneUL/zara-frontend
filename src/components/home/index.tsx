@@ -15,12 +15,13 @@ const Home = () => {
 
   useEffect(() => {
     const getPhoneList = async () => {
+      setError(null);
+
       try {
         const limit = searchValue ? undefined : 20;
         const phoneList_ = await requestPhoneList(limit, 0, searchValue);
         setPhoneList(phoneList_);
-      } catch (e) {
-        console.log(Translations.request_error, e);
+      } catch (_) {
         setError(Translations.request_error);
       } finally {
         setLoading(false);
@@ -38,7 +39,11 @@ const Home = () => {
         aria-label={Translations.phone_list}
         className="phone-list-container"
       >
-        {loading && <p>{Translations.loading_phone_list}</p>}
+        {loading && (
+          <p role="status" aria-live="polite">
+            {Translations.loading_phone_list}
+          </p>
+        )}
         {error && <p role="alert">{error}</p>}
         {phoneList?.map((phone, index) => (
           <PhoneItem itemInfo={phone} key={`PHONE_ITEM_${phone.id}_${index}`} />
