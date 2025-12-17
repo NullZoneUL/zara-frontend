@@ -19,5 +19,9 @@
     .phone-specs-value {
       width: 62%;
     }
+
+    &:last-child {
+      border-bottom: 0.5px solid var(--black);
+    }
   }
 }

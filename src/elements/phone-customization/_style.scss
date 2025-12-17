@@ -132,6 +132,10 @@
   .phone-image-figure {
     width: 42%;
     float: left;
+
+    img {
+      margin: 0 auto;
+    }
   }
 
   .phone-main-customization-info {
@@ -149,6 +153,57 @@
 
     .phone-info-add-to-cart {
       width: to-rem(267);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-image-figure {
+    width: 50%;
+  }
+
+  .phone-main-customization-info {
+    width: 44%;
+    margin-left: 6%;
+    margin-top: to-rem(70);
+
+    h1 {
+      font-size: $font-size-hd-xs;
+    }
+
+    h2 {
+      font-size: $font-size-l;
+    }
+
+    .phone-customization {
+      > legend {
+        font-size: $font-size-xs;
+      }
+
+      ul {
+        margin-top: to-rem($spacer-xl);
+      }
+    }
+
+    .storage-customization {
+      margin-top: to-rem($spacer-huge);
+
+      .phone-storage-option {
+        button {
+          font-size: $font-size-xs;
+          width: to-rem(95);
+          height: to-rem(65);
+        }
+      }
+    }
+
+    .color-customization .selected-color-name {
+      font-size: $font-size-xxs;
+    }
+
+    .phone-info-add-to-cart {
+      width: to-rem(380);
+      height: to-rem(56);
     }
   }
 }

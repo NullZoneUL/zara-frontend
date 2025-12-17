@@ -56,3 +56,27 @@
     }
   }
 }
+
+@media screen and (min-width: $desktopSize) {
+  .phone-container {
+    margin: to-rem(154) to-rem($spacer-giant2);
+
+    .phone-main-customization-container {
+      width: 100%;
+      max-width: to-rem(1200);
+      margin: 0 auto;
+    }
+
+    .phone-specifications-container {
+      max-width: to-rem(1200);
+      margin: 0 auto;
+      margin-top: to-rem(239.5);
+    }
+
+    .phone-similar-items-container {
+      max-width: to-rem(1200);
+      margin: 0 auto;
+      margin-top: to-rem(154);
+    }
+  }
+}
