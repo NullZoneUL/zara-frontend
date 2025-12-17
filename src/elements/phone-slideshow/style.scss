@@ -1,0 +1,29 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-list-slideshow {
+  margin-top: to-rem($spacer-3xl);
+
+  .phone-list-slideshow-overflow {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: to-rem(280);
+    overflow-x: auto;
+    scrollbar-color: var(--black) transparent;
+    scrollbar-width: thin;
+    padding-bottom: to-rem($spacer-3xl);
+    scrollbar-color: var(--black) var(--grey-border);
+
+    &::-webkit-scrollbar {
+      width: 6px; /* ⬅️ altura de la scrollbar */
+    }
+
+    > a {
+      float: left;
+      width: to-rem(280);
+
+      img {
+        height: to-rem(246);
+      }
+    }
+  }
+}
