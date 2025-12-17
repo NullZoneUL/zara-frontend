@@ -13,6 +13,10 @@ const browserRouter = createBrowserRouter([
     element: <RouterManager route={Routes.index} />,
   },
   {
+    path: `${Routes.mobile}/:id`,
+    element: <RouterManager route={Routes.mobile} />,
+  },
+  {
     path: '*',
     element: <RouterManager route={Routes.error} />,
   },

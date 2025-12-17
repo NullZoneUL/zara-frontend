@@ -8,12 +8,12 @@ interface PhoneItemInterface {
 }
 
 const PhoneItem = ({ itemInfo }: PhoneItemInterface) => {
-  const { brand, name, basePrice, imageUrl } = itemInfo;
+  const { brand, name, basePrice, imageUrl, id } = itemInfo;
 
   return (
     <Link
       aria-label={`${Translations.go_product} ${brand} ${name}`}
-      to={`/${Routes.index}`}
+      to={`/${Routes.mobile}/${id}`}
       className="phone-item-link-container"
     >
       <div className="phone-item-container">
