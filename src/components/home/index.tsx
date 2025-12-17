@@ -1,6 +1,7 @@
+import SearchEngine from '@elements/search-engine';
 import PhoneItem from '@elements/phone-item';
 import Translations from '@assets/languages/export';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { requestPhoneList } from '@api/client';
 import './_style.scss';
 
@@ -8,33 +9,47 @@ const Home = () => {
   const [phoneList, setPhoneList] = useState<PhoneList>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchValue, setSearchValue] = useState('');
+
+  const onSeachInput = useCallback((text: string) => setSearchValue(text), []);
 
   useEffect(() => {
     const getPhoneList = async () => {
+      setError(null);
+
       try {
-        const phoneList_ = await requestPhoneList(20, 0);
+        const limit = searchValue ? undefined : 20;
+        const phoneList_ = await requestPhoneList(limit, 0, searchValue);
         setPhoneList(phoneList_);
-      } catch (e) {
-        console.log(Translations.request_error, e);
+      } catch (_) {
         setError(Translations.request_error);
       } finally {
         setLoading(false);
       }
     };
     getPhoneList();
-  }, []);
+  }, [searchValue]);
 
   return (
-    <section
-      aria-label={Translations.phone_list}
-      className="phone-list-container"
-    >
-      {loading && <p>{Translations.loading_phone_list}</p>}
-      {error && <p role="alert">{error}</p>}
-      {phoneList?.map((phone, index) => (
-        <PhoneItem itemInfo={phone} key={`PHONE_ITEM_${phone.id}_${index}`} />
-      ))}
-    </section>
+    <>
+      {!loading && !error && (
+        <SearchEngine numResults={phoneList!.length} onInput={onSeachInput} />
+      )}
+      <section
+        aria-label={Translations.phone_list}
+        className="phone-list-container"
+      >
+        {loading && (
+          <p role="status" aria-live="polite">
+            {Translations.loading_phone_list}
+          </p>
+        )}
+        {error && <p role="alert">{error}</p>}
+        {phoneList?.map((phone, index) => (
+          <PhoneItem itemInfo={phone} key={`PHONE_ITEM_${phone.id}_${index}`} />
+        ))}
+      </section>
+    </>
   );
 };
 

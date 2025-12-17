@@ -1,0 +1,59 @@
+@use '../../styles/abstract/abstract' as *;
+
+.search-engine-container {
+  position: relative;
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  > input {
+    display: block;
+    border: none;
+    padding: to-rem($spacer-xs) 0;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    border-bottom: 0.5px solid var(--black);
+    outline: none;
+    font-weight: lighter;
+    font-size: $font-size-s;
+    color: var(--back);
+
+    &::placeholder {
+      color: var(--grey-light);
+    }
+  }
+
+  .search-clear-button {
+    position: absolute;
+    top: to-rem($spacer-xs);
+    right: 0;
+    background-color: transparent;
+    border: none;
+    width: to-rem(21);
+    height: to-rem(21);
+    cursor: pointer;
+    display: none;
+
+    &.search-clear-button-show {
+      display: block;
+    }
+  }
+
+  .sg-num-results {
+    margin-top: to-rem($spacer-md);
+    display: block;
+    font-size: $font-size-xxs;
+    color: var(--black);
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+}

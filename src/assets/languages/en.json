@@ -9,5 +9,8 @@
   "request_error": "There was an error trying to retrieve the phone list. Check your .env variables.",
   "price": "Price",
   "loading_phone_list": "Loading phone list...",
-  "phone_list": "Phone list"
+  "phone_list": "Phone list",
+  "search_placeholder": "Search for a smartphone...",
+  "clean_search": "Clean search input",
+  "results": "Results"
 }
