@@ -1,0 +1,82 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-container {
+  margin: to-rem($spacer-m) to-rem($spacer-md);
+
+  .back-container {
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: $font-size-xxs;
+    font-weight: lighter;
+    text-decoration: none;
+
+    > img {
+      display: inline-block;
+      width: to-rem(7);
+      margin-right: to-rem($spacer-xxs);
+      vertical-align: middle;
+    }
+
+    > span {
+      vertical-align: middle;
+    }
+  }
+
+  .phone-specifications-container,
+  .phone-similar-items-container {
+    margin-top: to-rem($spacer-giant);
+
+    h1 {
+      text-transform: uppercase;
+      color: var(--black);
+      font-size: $font-size-l;
+      font-weight: lighter;
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-container {
+    margin: to-rem($spacer-4xl) to-rem($spacer-3xl);
+
+    .back-container {
+      display: none;
+    }
+
+    .phone-main-customization-container {
+      overflow: hidden;
+    }
+
+    .phone-specifications-container {
+      margin-top: to-rem(116);
+    }
+
+    .phone-similar-items-container {
+      margin-top: to-rem(88);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-container {
+    margin: to-rem(154) to-rem($spacer-giant2);
+
+    .phone-main-customization-container {
+      width: 100%;
+      max-width: to-rem(1200);
+      margin: 0 auto;
+    }
+
+    .phone-specifications-container {
+      max-width: to-rem(1200);
+      margin: 0 auto;
+      margin-top: to-rem(239.5);
+    }
+
+    .phone-similar-items-container {
+      max-width: to-rem(1200);
+      margin: 0 auto;
+      margin-top: to-rem(154);
+    }
+  }
+}

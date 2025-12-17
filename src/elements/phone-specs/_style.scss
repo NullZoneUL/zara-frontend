@@ -1,0 +1,27 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-specs {
+  margin-top: to-rem($spacer-3xl);
+
+  .phone-specs-row {
+    border-top: 0.5px solid var(--black);
+    display: flex;
+    padding: to-rem($spacer-md) 0;
+    color: var(--black);
+    font-size: $font-size-xxs;
+    font-weight: lighter;
+
+    .phone-specs-key {
+      width: 38%;
+      text-transform: uppercase;
+    }
+
+    .phone-specs-value {
+      width: 62%;
+    }
+
+    &:last-child {
+      border-bottom: 0.5px solid var(--black);
+    }
+  }
+}

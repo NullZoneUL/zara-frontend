@@ -1,0 +1,209 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-main-customization-info {
+  margin-top: to-rem($spacer-3xl);
+
+  h1 {
+    color: var(--black);
+    font-size: $font-size-l;
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-top: to-rem($spacer-sm);
+    color: var(--black);
+    font-weight: lighter;
+    font-size: $font-size-xs;
+
+    &::before {
+      content: 'From ';
+    }
+
+    &::after {
+      content: ' EUR';
+    }
+  }
+
+  .phone-customization {
+    margin: 0;
+    border: none;
+    padding: 0;
+
+    > legend {
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: lighter;
+      font-size: $font-size-xxs;
+    }
+
+    ul {
+      margin-top: to-rem($spacer-lg);
+
+      > li {
+        float: left;
+      }
+    }
+  }
+
+  .storage-customization {
+    margin-top: to-rem($spacer-3xl);
+    margin-bottom: to-rem($spacer-xxl);
+
+    .phone-storage-option {
+      button {
+        width: to-rem(89);
+        height: to-rem(48);
+        background-color: transparent;
+        border: 1px solid var(--grey-border);
+        cursor: pointer;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: $font-size-xxs;
+        font-weight: lighter;
+      }
+
+      &.selected-storage-option button {
+        border-color: var(--black);
+      }
+    }
+  }
+
+  .color-customization {
+    .color-list-container {
+      overflow: hidden;
+
+      .phone-color-option {
+        margin-right: to-rem($spacer-md);
+
+        button {
+          cursor: pointer;
+          border: 1px solid var(--grey-border);
+          width: to-rem(20);
+          height: to-rem(20);
+          position: relative;
+
+          &::after {
+            content: ' ';
+            border: 1px solid var(--white);
+            width: to-rem(18);
+            height: to-rem(18);
+            display: block;
+            left: 0;
+            top: 0;
+            position: absolute;
+          }
+        }
+
+        &.selected-color-option button {
+          border-color: var(--black);
+        }
+      }
+    }
+
+    .selected-color-name {
+      font-size: $font-size-xxs;
+      font-weight: lighter;
+      color: var(--black);
+      margin-top: to-rem($spacer-xs);
+    }
+  }
+
+  .phone-info-add-to-cart {
+    width: 100%;
+    margin-top: to-rem($spacer-3xl);
+    background-color: var(--black);
+    text-transform: uppercase;
+    font-size: $font-size-xxs;
+    font-weight: lighter;
+    color: var(--white);
+    padding: to-rem($spacer-md) 0;
+    font-family: Helvetica, Arial, sans-serif;
+    border: transparent;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: var(--disabled-bg);
+      color: var(--dissabed-color);
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-image-figure {
+    width: 42%;
+    float: left;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .phone-main-customization-info {
+    width: 53%;
+    float: left;
+  }
+
+  .phone-main-customization-info {
+    margin-top: to-rem($spacer-xl2);
+    margin-left: 5%;
+
+    .color-customization .selected-color-name {
+      font-size: $font-size-xxxs;
+    }
+
+    .phone-info-add-to-cart {
+      width: to-rem(267);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .phone-image-figure {
+    width: 50%;
+  }
+
+  .phone-main-customization-info {
+    width: 44%;
+    margin-left: 6%;
+    margin-top: to-rem(70);
+
+    h1 {
+      font-size: $font-size-hd-xs;
+    }
+
+    h2 {
+      font-size: $font-size-l;
+    }
+
+    .phone-customization {
+      > legend {
+        font-size: $font-size-xs;
+      }
+
+      ul {
+        margin-top: to-rem($spacer-xl);
+      }
+    }
+
+    .storage-customization {
+      margin-top: to-rem($spacer-huge);
+
+      .phone-storage-option {
+        button {
+          font-size: $font-size-xs;
+          width: to-rem(95);
+          height: to-rem(65);
+        }
+      }
+    }
+
+    .color-customization .selected-color-name {
+      font-size: $font-size-xxs;
+    }
+
+    .phone-info-add-to-cart {
+      width: to-rem(380);
+      height: to-rem(56);
+    }
+  }
+}
