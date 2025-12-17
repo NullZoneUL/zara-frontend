@@ -29,7 +29,7 @@ const PhoneCustomization = ({ data, addToCart }: PhoneCustomizationProps) => {
 
   return (
     <>
-      <figure>
+      <figure className="phone-image-figure">
         <img
           src={data?.colorOptions[selectedColor || 0].imageUrl}
           alt={`${data.brand} ${data.name} ${data.colorOptions[selectedColor || 0].name}`}

@@ -34,7 +34,7 @@
       text-transform: uppercase;
       color: var(--black);
       font-weight: lighter;
-      font-size: $font-size-xs;
+      font-size: $font-size-xxs;
     }
 
     ul {
@@ -124,6 +124,31 @@
     &:disabled {
       background-color: var(--disabled-bg);
       color: var(--dissabed-color);
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-image-figure {
+    width: 42%;
+    float: left;
+  }
+
+  .phone-main-customization-info {
+    width: 53%;
+    float: left;
+  }
+
+  .phone-main-customization-info {
+    margin-top: to-rem($spacer-xl2);
+    margin-left: 5%;
+
+    .color-customization .selected-color-name {
+      font-size: $font-size-xxxs;
+    }
+
+    .phone-info-add-to-cart {
+      width: to-rem(267);
     }
   }
 }

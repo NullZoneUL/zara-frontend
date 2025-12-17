@@ -34,3 +34,25 @@
     }
   }
 }
+
+@media screen and (min-width: $tabletSize) {
+  .phone-container {
+    margin: to-rem($spacer-4xl) to-rem($spacer-3xl);
+
+    .back-container {
+      display: none;
+    }
+
+    .phone-main-customization-container {
+      overflow: hidden;
+    }
+
+    .phone-specifications-container {
+      margin-top: to-rem(116);
+    }
+
+    .phone-similar-items-container {
+      margin-top: to-rem(88);
+    }
+  }
+}
