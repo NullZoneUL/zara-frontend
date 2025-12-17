@@ -1,3 +1,17 @@
+const getRequest = async (url: URL) => {
+  const response = await fetch(url.toString(), {
+    headers: {
+      'x-api-key': import.meta.env.VITE_X_API_KEY,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Error fetching products');
+  }
+
+  return response.json();
+};
+
 // Default phone list request function
 export const requestPhoneList = async (
   limit?: number,
@@ -10,15 +24,12 @@ export const requestPhoneList = async (
   offset && url.searchParams.set('offset', offset.toString());
   search && url.searchParams.set('search', search);
 
-  const response = await fetch(url.toString(), {
-    headers: {
-      'x-api-key': import.meta.env.VITE_X_API_KEY,
-    },
-  });
+  return getRequest(url);
+};
 
-  if (!response.ok) {
-    throw new Error('Error fetching products');
-  }
+// Phone info request
+export const requestPhoneInfo = async (id: number): Promise<PhoneItem> => {
+  const url = new URL(`${import.meta.env.VITE_API_URL}/${id}`);
 
-  return response.json();
+  return getRequest(url);
 };

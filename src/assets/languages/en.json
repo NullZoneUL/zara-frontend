@@ -9,8 +9,30 @@
   "request_error": "There was an error trying to retrieve the phone list. Check your .env variables.",
   "price": "Price",
   "loading_phone_list": "Loading phone list...",
+  "loading_phone_info": "Loading phone info...",
   "phone_list": "Phone list",
   "search_placeholder": "Search for a smartphone...",
   "clean_search": "Clean search input",
-  "results": "Results"
+  "results": "Results",
+  "phone_request_error": "There was an error trying to retrieve the phone information. Check your .env variables.",
+  "phone_info": "Phone information",
+  "back": "Back",
+  "storage_question": "Storage. How much space do you need?",
+  "color_question": "Color. Pick your favourite.",
+  "add": "Add",
+  "specifications": "Specifications",
+  "specs": {
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "mainCamera": "Main camera",
+    "selfieCamera": "Selfie camera",
+    "battery": "Battery",
+    "os": "OS",
+    "screenRefreshRate": "Screen refresh rate",
+    "brand": "Brand",
+    "name": "Name",
+    "description": "Description"
+  },
+  "similar_items": "Similar items"
 }
