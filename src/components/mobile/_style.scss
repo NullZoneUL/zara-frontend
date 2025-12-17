@@ -1,0 +1,36 @@
+@use '../../styles/abstract/abstract' as *;
+
+.phone-container {
+  margin: to-rem($spacer-m) to-rem($spacer-md);
+
+  .back-container {
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: $font-size-xxs;
+    font-weight: lighter;
+    text-decoration: none;
+
+    > img {
+      display: inline-block;
+      width: to-rem(7);
+      margin-right: to-rem($spacer-xxs);
+      vertical-align: middle;
+    }
+
+    > span {
+      vertical-align: middle;
+    }
+  }
+
+  .phone-specifications-container,
+  .phone-similar-items-container {
+    margin-top: to-rem($spacer-giant);
+
+    h1 {
+      text-transform: uppercase;
+      color: var(--black);
+      font-size: $font-size-l;
+      font-weight: lighter;
+    }
+  }
+}

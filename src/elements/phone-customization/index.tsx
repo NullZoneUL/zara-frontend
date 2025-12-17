@@ -63,22 +63,29 @@ const PhoneCustomization = ({ data, addToCart }: PhoneCustomizationProps) => {
         </fieldset>
         <fieldset className="color-customization phone-customization">
           <legend>{Translations.color_question}</legend>
-          <ul>
-            {data.colorOptions.map((color, index) => (
-              <li
-                key={`COLOR_OPTION_${color.name}`}
-                className={`phone-color-option ${index === selectedColor ? 'selected-color-option' : ''}`}
-              >
-                <button
-                  type="button"
-                  onClick={() => selectColorOption(index)}
-                  style={{ backgroundColor: color.hexCode }}
-                  aria-label={color.name}
-                  aria-pressed={index === selectedColor}
-                />
-              </li>
-            ))}
-          </ul>
+          <div className="color-list-container">
+            <ul>
+              {data.colorOptions.map((color, index) => (
+                <li
+                  key={`COLOR_OPTION_${color.name}`}
+                  className={`phone-color-option ${index === selectedColor ? 'selected-color-option' : ''}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => selectColorOption(index)}
+                    style={{ backgroundColor: color.hexCode }}
+                    aria-label={color.name}
+                    aria-pressed={index === selectedColor}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="selected-color-name" aria-live="polite">
+            {typeof selectedColor === 'number'
+              ? data.colorOptions[selectedColor].name
+              : '\u00A0'}
+          </p>
         </fieldset>
         <button
           type="button"
