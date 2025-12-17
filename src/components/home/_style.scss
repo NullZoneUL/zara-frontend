@@ -5,6 +5,10 @@
     to-rem($spacer-md);
 }
 
+.search-engine-container {
+  margin: to-rem($spacer-xxl2) to-rem($spacer-md) 0 to-rem($spacer-md);
+}
+
 @media screen and (min-width: $tabletSize) {
   .phone-list-container {
     margin: to-rem($spacer-huge) to-rem($spacer-3xl) to-rem($spacer-3xl)
@@ -13,11 +17,20 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .search-engine-container {
+    margin: to-rem($spacer-s-huge) to-rem($spacer-3xl) 0 to-rem($spacer-3xl);
+  }
 }
 
 @media screen and (min-width: $desktopSize) {
   .phone-list-container {
     margin: to-rem($spacer-huge) to-rem($spacer-giant2) to-rem($spacer-giant2)
+      to-rem($spacer-giant2);
+  }
+
+  .search-engine-container {
+    margin: to-rem($spacer-s-huge) to-rem($spacer-giant2) 0
       to-rem($spacer-giant2);
   }
 }

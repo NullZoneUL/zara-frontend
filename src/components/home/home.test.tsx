@@ -42,6 +42,18 @@ describe('Home component', () => {
     expect(await screen.findByText('Samsung')).toBeInTheDocument();
   });
 
+  it('shows loading state initially', async () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    expect(
+      await screen.findByText(/Loading phone list.../i),
+    ).toBeInTheDocument();
+  });
+
   it('renders error message when request fails', async () => {
     (requestPhoneList as jest.Mock).mockRejectedValueOnce(new Error('Fail'));
 

@@ -38,6 +38,7 @@ const Home = () => {
         aria-label={Translations.phone_list}
         className="phone-list-container"
       >
+        {loading && <p>{Translations.loading_phone_list}</p>}
         {error && <p role="alert">{error}</p>}
         {phoneList?.map((phone, index) => (
           <PhoneItem itemInfo={phone} key={`PHONE_ITEM_${phone.id}_${index}`} />
