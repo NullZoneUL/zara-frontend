@@ -1,11 +1,17 @@
 import Logo from '@assets/images/logo.svg';
 import Cart from '@assets/images/cart.svg';
+import CartItems from '@assets/images/cart-items.svg';
 import Translations from '@assets/languages/export';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '@components/app';
 import { Routes } from '@routes/pageConfig';
 import './_style.scss';
 
 const TopBar = () => {
+  const { items } = useContext(CartContext);
+  const cartLength = items.length;
+
   return (
     <header>
       <nav aria-label={Translations.main_navigation}>
@@ -22,12 +28,15 @@ const TopBar = () => {
           className="top-bar-cart"
         >
           <div>
-            <img alt={Translations.cart} src={Cart} />
+            <img
+              alt={Translations.cart}
+              src={cartLength > 0 ? CartItems : Cart}
+            />
             <span
               aria-live="polite"
-              aria-label={`0 ${Translations.cart_items}`}
+              aria-label={`${cartLength} ${Translations.cart_items}`}
             >
-              0
+              {cartLength}
             </span>
           </div>
         </Link>
