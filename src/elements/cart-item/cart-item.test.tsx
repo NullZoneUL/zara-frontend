@@ -9,6 +9,7 @@ const mockInfo = {
   storage: '128GB',
   price: 999,
   colorHex: '#000',
+  timestamp: 1766092932474,
 };
 
 describe('CartItem', () => {

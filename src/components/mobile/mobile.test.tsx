@@ -127,6 +127,7 @@ describe('MobileView component', () => {
       id: '1',
       selectedColor: '#000000',
       selectedStorage: '128GB',
+      timestamp: Date.now(),
     });
   });
 });

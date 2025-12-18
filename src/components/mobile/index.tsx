@@ -28,6 +28,7 @@ const MobileView = ({ id }: MobileViewProps) => {
       id: data!.id,
       selectedColor: data!.colorOptions[selectedColor].hexCode,
       selectedStorage: data!.storageOptions[selectedStorage].capacity,
+      timestamp: Date.now(),
     };
     setItem(cartItem);
   };

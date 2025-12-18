@@ -70,7 +70,7 @@ const CartView = () => {
                 {cartItemList.map((item, index) => (
                   <CartItem
                     info={item}
-                    key={`CART_ITEM_${item.id}_${item.colorHex}_${item.storage}_${index}`}
+                    key={`CART_ITEM_${item.id}_${item.colorHex}_${item.storage}_${index}_${item.timestamp}`}
                     onDelete={removeItem}
                   />
                 ))}

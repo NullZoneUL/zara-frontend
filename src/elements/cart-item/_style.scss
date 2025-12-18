@@ -6,6 +6,7 @@
   transition: max-height 0.5s ease-in-out;
   max-height: 1000px;
   overflow: hidden;
+  margin-bottom: to-rem($spacer-m);
 
   figure {
     width: 40%;
@@ -61,14 +62,19 @@
 }
 
 @media screen and (min-width: $tabletSize) {
-  .cart-item-container .phone-info-section button {
-    margin-bottom: to-rem($spacer-s-huge);
+  .cart-item-container {
+    margin-bottom: to-rem($spacer-md2);
+
+    .phone-info-section button {
+      margin-bottom: to-rem($spacer-s-huge);
+    }
   }
 }
 
 @media screen and (min-width: $desktopSize) {
   .cart-item-container {
     width: to-rem(548);
+    margin-bottom: to-rem($spacer-xl);
 
     .phone-info-section button {
       margin-bottom: to-rem($spacer-xxl);

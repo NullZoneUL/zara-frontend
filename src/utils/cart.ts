@@ -8,14 +8,14 @@ export const initializeCart = () => {
   }
 };
 
-export const getItemsInCart = (): { items: CartList } => {
+export const getItemsInCart = (): CartList => {
   const jsonString = localStorage.getItem(CART_LABEL);
 
   if (!jsonString) {
     initializeCart();
   }
 
-  const items = JSON.parse(jsonString!);
+  const { items } = JSON.parse(jsonString!);
   return items;
 };
 
@@ -52,6 +52,7 @@ export const requestPhoneListInfo = async (
         color: colorOption.name,
         price: storageOption.price,
         colorHex: colorOption.hexCode,
+        timestamp: phone.timestamp,
       };
     }),
   );

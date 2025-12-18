@@ -19,7 +19,7 @@ export const CartContext = createContext<{
 });
 
 const App = ({ children }: AppInterface) => {
-  const [cartList, setCartList] = useState<CartList>([]);
+  const [cartList, setCartList] = useState<CartList>(getItemsInCart());
 
   const setNewItemCartList = (item: CartItem) => {
     setCartList([...cartList, item]);
@@ -47,11 +47,6 @@ const App = ({ children }: AppInterface) => {
   useEffect(() => {
     addNewCartList(cartList);
   }, [cartList]);
-
-  useEffect(() => {
-    const { items } = getItemsInCart();
-    setCartList(items);
-  }, []);
 
   return (
     <CartContext.Provider
