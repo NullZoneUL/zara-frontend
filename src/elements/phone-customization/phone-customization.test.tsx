@@ -55,7 +55,7 @@ describe('PhoneCustomization', () => {
       }),
     ).toBeInTheDocument();
 
-    expect(screen.getByText('999')).toBeInTheDocument();
+    expect(screen.getByText('From 999')).toBeInTheDocument();
   });
 
   it('disables add to cart button initially', () => {

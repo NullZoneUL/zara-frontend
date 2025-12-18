@@ -40,7 +40,7 @@ const PhoneCustomization = ({ data, addToCart }: PhoneCustomizationProps) => {
         <h2>
           {typeof selectedStorage === 'number'
             ? data.storageOptions[selectedStorage].price
-            : data.basePrice}
+            : `From ${data.basePrice}`}
         </h2>
         <fieldset className="storage-customization phone-customization">
           <legend>{Translations.storage_question}</legend>

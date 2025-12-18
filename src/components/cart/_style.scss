@@ -1,0 +1,152 @@
+@use '../../styles/abstract/abstract' as *;
+
+.cart-list-container {
+  margin: to-rem($spacer-xl) to-rem($spacer-md);
+  min-height: calc(100vh - to-rem(133));
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: $font-size-l;
+    font-weight: 300;
+  }
+
+  ul {
+    margin-top: to-rem($spacer-xl);
+  }
+
+  .bottom-pay-container {
+    margin-top: auto;
+
+    .total-price {
+      text-transform: uppercase;
+      color: var(--black);
+      font-size: $font-size-xs;
+      position: relative;
+
+      span {
+        position: absolute;
+        right: 0;
+
+        &::after {
+          content: ' EUR';
+        }
+      }
+    }
+
+    .continue-shopping,
+    button {
+      text-align: center;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-top: to-rem($spacer-xl);
+      width: 48%;
+      padding: to-rem($spacer-md) 0;
+      font-size: $font-size-xxs;
+    }
+
+    .continue-shopping {
+      border: 0.5px solid var(--black-highlight);
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    button {
+      margin-left: 4%;
+      background-color: var(--black-highlight);
+      border: 0.5px solid transparent;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    &.cart-no-items .continue-shopping {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .cart-list-container {
+    margin: to-rem($spacer-4xl) to-rem($spacer-3xl);
+    min-height: calc(100vh - to-rem(181));
+
+    .bottom-pay-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .total-price {
+        display: inline-block;
+        right: to-rem(210);
+        position: absolute;
+
+        span {
+          position: relative;
+          margin-left: to-rem($spacer-xl);
+        }
+      }
+
+      .continue-shopping,
+      button {
+        width: to-rem(180);
+        margin: 0;
+      }
+
+      .continue-shopping {
+        order: -1;
+      }
+
+      button {
+        position: absolute;
+        right: 0;
+      }
+
+      &.cart-no-items .continue-shopping {
+        width: to-rem(180);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .cart-list-container .bottom-pay-container {
+    .total-price {
+      right: to-rem(250);
+    }
+
+    .continue-shopping,
+    button {
+      width: to-rem(200);
+    }
+
+    &.cart-no-items .continue-shopping {
+      width: to-rem(200);
+    }
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .cart-list-container {
+    margin: to-rem(59) to-rem($spacer-giant2) to-rem($spacer-4xl)
+      to-rem($spacer-giant2);
+    min-height: calc(100vh - to-rem(192));
+
+    .bottom-pay-container {
+      .total-price {
+        right: to-rem(340);
+      }
+
+      .continue-shopping,
+      button {
+        width: to-rem(260);
+        padding: to-rem($spacer-lg) 0;
+      }
+
+      &.cart-no-items .continue-shopping {
+        width: to-rem(260);
+      }
+    }
+  }
+}

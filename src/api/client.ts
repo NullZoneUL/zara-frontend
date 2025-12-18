@@ -28,7 +28,7 @@ export const requestPhoneList = async (
 };
 
 // Phone info request
-export const requestPhoneInfo = async (id: number): Promise<PhoneItem> => {
+export const requestPhoneInfo = async (id: string): Promise<PhoneItem> => {
   const url = new URL(`${import.meta.env.VITE_API_URL}/${id}`);
 
   return getRequest(url);

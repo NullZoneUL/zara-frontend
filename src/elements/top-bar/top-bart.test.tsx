@@ -2,6 +2,11 @@ import TopBar from '.';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+jest.mock('@api/client', () => ({
+  requestPhoneList: jest.fn(),
+  requestPhoneInfo: jest.fn(),
+}));
+
 describe('TopBar', () => {
   const renderComponent = () =>
     render(

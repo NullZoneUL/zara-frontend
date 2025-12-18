@@ -3,26 +3,25 @@ import PhoneSpecs from '@elements/phone-specs';
 import PhoneSlideShow from '@elements/phone-slideshow';
 import Back from '@assets/images/arrow.svg';
 import Translations from '@assets/languages/export';
-import { useEffect, useRef, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '@components/app';
 import { Routes } from '@routes/pageConfig';
+import { useDelayedLoading } from '@utils/delay-custom-hook/delay';
 import { requestPhoneInfo } from '@api/client';
 import './_style.scss';
 
 interface MobileViewProps {
-  id: number;
+  id: string;
 }
-
-const SHOW_LOADING_TMO = 1500;
 
 const MobileView = ({ id }: MobileViewProps) => {
   const { setItem } = useContext(CartContext);
   const [data, setData] = useState<PhoneItem | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showLoading, setShowLoading] = useState(false);
-  const showLoadingTmo = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const showLoading = useDelayedLoading(loading);
 
   const addToCart = (selectedColor: number, selectedStorage: number) => {
     const cartItem = {
@@ -51,22 +50,6 @@ const MobileView = ({ id }: MobileViewProps) => {
 
     getMobileInfo();
   }, [id]);
-
-  // We delay the Loading message for 1.5 seconds, so we don't display it each time we access to this view
-  useEffect(() => {
-    clearTimeout(showLoadingTmo.current);
-    setShowLoading(false);
-
-    if (loading) {
-      showLoadingTmo.current = setTimeout(
-        () => setShowLoading(true),
-        SHOW_LOADING_TMO,
-      );
-    }
-    return () => {
-      clearTimeout(showLoadingTmo.current);
-    };
-  }, [loading]);
 
   return (
     <section

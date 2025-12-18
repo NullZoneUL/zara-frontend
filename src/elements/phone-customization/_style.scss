@@ -14,10 +14,6 @@
     color: var(--black);
     font-size: $font-size-xs;
 
-    &::before {
-      content: 'From ';
-    }
-
     &::after {
       content: ' EUR';
     }

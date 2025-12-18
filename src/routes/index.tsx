@@ -17,6 +17,10 @@ const browserRouter = createBrowserRouter([
     element: <RouterManager route={Routes.mobile} />,
   },
   {
+    path: Routes.cart,
+    element: <RouterManager route={Routes.cart} />,
+  },
+  {
     path: '*',
     element: <RouterManager route={Routes.error} />,
   },
