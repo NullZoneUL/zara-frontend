@@ -1,7 +1,7 @@
 import TopBar from '@elements/top-bar';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
-import { getItemsInCart, addItemToCart } from '@utils/cart';
+import { getItemsInCart, addNewCartList } from '@utils/cart';
 import './_style.scss';
 
 interface AppInterface {
@@ -11,15 +11,42 @@ interface AppInterface {
 export const CartContext = createContext<{
   items: CartList;
   setItem: (obj: CartItem) => void;
-}>({ items: [], setItem: (_: CartItem) => {} });
+  removeItem: (id: string, color: string, storage: string) => void;
+}>({
+  items: [],
+  setItem: (_: CartItem) => {},
+  removeItem: (_: string, __: string, ___: string) => {},
+});
 
 const App = ({ children }: AppInterface) => {
   const [cartList, setCartList] = useState<CartList>([]);
 
   const setNewItemCartList = (item: CartItem) => {
-    addItemToCart(item);
     setCartList([...cartList, item]);
   };
+
+  const removeItemCartList = (id: string, color: string, storage: string) => {
+    let removed = false;
+
+    setCartList(
+      cartList.filter(item => {
+        if (
+          !removed &&
+          item.id === id &&
+          item.selectedColor === color &&
+          item.selectedStorage === storage
+        ) {
+          removed = true;
+          return false;
+        }
+        return true;
+      }),
+    );
+  };
+
+  useEffect(() => {
+    addNewCartList(cartList);
+  }, [cartList]);
 
   useEffect(() => {
     const { items } = getItemsInCart();
@@ -28,7 +55,11 @@ const App = ({ children }: AppInterface) => {
 
   return (
     <CartContext.Provider
-      value={{ items: cartList, setItem: setNewItemCartList }}
+      value={{
+        items: cartList,
+        setItem: setNewItemCartList,
+        removeItem: removeItemCartList,
+      }}
     >
       <TopBar />
       <main className="page-container">{children}</main>

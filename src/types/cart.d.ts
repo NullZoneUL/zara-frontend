@@ -13,4 +13,5 @@ declare interface ParsedCartItemInterface {
   storage: string;
   color: string;
   price: number;
+  colorHex: string;
 }

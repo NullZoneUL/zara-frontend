@@ -1,6 +1,6 @@
 import CartItem from '@elements/cart-item';
 import Translations from '@assets/languages/export';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '@components/app';
 import { Routes } from '@routes/pageConfig';
@@ -9,13 +9,14 @@ import { requestPhoneListInfo } from '@utils/cart';
 import './_style.scss';
 
 const CartView = () => {
-  const { items } = useContext(CartContext);
+  const { items, removeItem } = useContext(CartContext);
   const [cartItemList, setCartItemList] = useState<ParsedCartItemInterface[]>(
     [],
   );
   const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const firstLoad = useRef(true);
 
   const showLoading = useDelayedLoading(loading);
 
@@ -38,11 +39,18 @@ const CartView = () => {
       } catch (_) {
         setError(Translations.cart_request_error);
       } finally {
+        firstLoad.current = false;
         setLoading(false);
       }
     };
 
-    items.length > 0 ? requestAndParsePhoneListInfo() : setLoading(false);
+    if (items.length > 0) {
+      requestAndParsePhoneListInfo();
+    } else {
+      firstLoad.current = false;
+      setLoading(false);
+      setCartItemList([]);
+    }
   }, [items]);
 
   return (
@@ -53,17 +61,17 @@ const CartView = () => {
         </p>
       )}
       {error && <p role="alert">{error}</p>}
-      {cartItemList && !loading && !error && (
+      {cartItemList && !firstLoad.current && !error && (
         <>
           <h1>{`${Translations.cart} (${cartItemList.length})`}</h1>
           {cartItemList.length > 0 ? (
             <>
-              <ul className="cart-item-list">
+              <ul className="cart-item-list" aria-live="polite">
                 {cartItemList.map((item, index) => (
                   <CartItem
                     info={item}
-                    key={`CART_ITEM_${item.id}_${index}`}
-                    onDelete={() => console.log('TODO!!!')}
+                    key={`CART_ITEM_${item.id}_${item.colorHex}_${item.storage}_${index}`}
+                    onDelete={removeItem}
                   />
                 ))}
               </ul>
