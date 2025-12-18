@@ -1,0 +1,58 @@
+@use '../../styles/abstract/abstract' as *;
+
+.cart-item-container {
+  display: flex;
+  position: relative;
+
+  figure {
+    width: 40%;
+  }
+
+  .phone-info-section {
+    width: 55%;
+    margin-left: 5%;
+
+    h2 {
+      margin-top: to-rem($spacer-xxl);
+      font-size: $font-size-xxs;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin-top: to-rem($spacer-xxs);
+      font-size: $font-size-xxs;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    span {
+      margin-top: to-rem($spacer-lg);
+      font-size: $font-size-xxs;
+      color: var(--black);
+      text-transform: uppercase;
+      display: block;
+
+      &::after {
+        content: ' EUR';
+      }
+    }
+
+    button {
+      position: absolute;
+      bottom: 0;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      color: var(--red);
+      font-size: $font-size-xxs;
+      padding: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .cart-item-container .phone-info-section button {
+    margin-bottom: to-rem($spacer-xl);
+  }
+}

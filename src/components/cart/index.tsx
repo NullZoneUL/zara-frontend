@@ -10,9 +10,9 @@ import './_style.scss';
 
 const CartView = () => {
   const { items } = useContext(CartContext);
-  const [cartItemList, setCartItemList] = useState<
-    ParsedCartItemInterface[] | null
-  >(null);
+  const [cartItemList, setCartItemList] = useState<ParsedCartItemInterface[]>(
+    [],
+  );
   const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,7 +42,7 @@ const CartView = () => {
       }
     };
 
-    items.length > 0 && requestAndParsePhoneListInfo();
+    items.length > 0 ? requestAndParsePhoneListInfo() : setLoading(false);
   }, [items]);
 
   return (
@@ -53,7 +53,7 @@ const CartView = () => {
         </p>
       )}
       {error && <p role="alert">{error}</p>}
-      {cartItemList && (
+      {cartItemList && !loading && !error && (
         <>
           <h1>{`${Translations.cart} (${cartItemList.length})`}</h1>
           {cartItemList.length > 0 ? (
