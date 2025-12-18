@@ -15,7 +15,7 @@ export const getItemsInCart = (): CartList => {
     initializeCart();
   }
 
-  const { items } = JSON.parse(jsonString!);
+  const { items } = JSON.parse(jsonString ?? JSON.stringify({ items: [] }));
   return items;
 };
 

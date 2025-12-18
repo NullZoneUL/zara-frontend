@@ -1,7 +1,7 @@
 import browserRouter from '@routes/index.tsx';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { initializeCart } from '@utils/cart';
+import { initializeCart } from '@utils/cart/cart';
 import './_main.scss';
 
 initializeCart();

@@ -1,7 +1,7 @@
 import TopBar from '@elements/top-bar';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
-import { getItemsInCart, addNewCartList } from '@utils/cart';
+import { getItemsInCart, addNewCartList } from '@utils/cart/cart';
 import './_style.scss';
 
 interface AppInterface {

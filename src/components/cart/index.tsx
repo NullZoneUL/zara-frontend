@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '@components/app';
 import { Routes } from '@routes/pageConfig';
 import { useDelayedLoading } from '@utils/delay-custom-hook/delay';
-import { requestPhoneListInfo } from '@utils/cart';
+import { requestPhoneListInfo } from '@utils/cart/cart';
 import './_style.scss';
 
 const CartView = () => {

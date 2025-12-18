@@ -1,10 +1,15 @@
 import Home from '.';
+import Translations from '@assets/languages/export';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { requestPhoneList } from '@api/client';
 
 jest.mock('@api/client', () => ({
   requestPhoneList: jest.fn(),
+}));
+
+jest.mock('@utils/delay-custom-hook/delay', () => ({
+  useDelayedLoading: jest.fn(),
 }));
 
 const mockPhones = [
@@ -29,16 +34,19 @@ describe('Home component', () => {
     jest.clearAllMocks();
   });
 
-  it('renders loading state initially', () => {
-    (requestPhoneList as jest.Mock).mockResolvedValueOnce(mockPhones);
+  it('renders loading message when delayed loading is active', () => {
+    const { useDelayedLoading } = require('@utils/delay-custom-hook/delay');
+    useDelayedLoading.mockReturnValue(true);
 
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>,
+    (requestPhoneList as jest.Mock).mockImplementation(
+      () => new Promise(() => {}),
     );
 
-    expect(screen.getByText(/loading phone list/i)).toBeInTheDocument();
+    render(<Home />);
+
+    expect(screen.getByRole('status')).toHaveTextContent(
+      Translations.loading_phone_list,
+    );
   });
 
   it('renders phone list when request succeeds', async () => {

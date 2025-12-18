@@ -1,0 +1,14 @@
+@use '../../styles/abstract/abstract' as *;
+
+.not-found-container {
+  text-align: center;
+
+  h1 {
+    margin-bottom: to-rem($spacer-xl2);
+    color: var(--red);
+  }
+
+  a {
+    color: var(--black);
+  }
+}

@@ -3,9 +3,9 @@ import Translations from '@assets/languages/export';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { CartContext } from '@components/app';
-import { requestPhoneListInfo } from '@utils/cart';
+import { requestPhoneListInfo } from '@utils/cart/cart';
 
-jest.mock('@utils/cart', () => ({
+jest.mock('@utils/cart/cart', () => ({
   requestPhoneListInfo: jest.fn(),
 }));
 

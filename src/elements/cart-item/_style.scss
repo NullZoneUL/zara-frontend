@@ -3,7 +3,9 @@
 .cart-item-container {
   display: flex;
   position: relative;
-  transition: max-height 0.5s ease-in-out;
+  transition:
+    max-height 0.5s ease-in-out,
+    margin-bottom 0.5s cubic-bezier(0.4, 0, 1, 1);
   max-height: 1000px;
   overflow: hidden;
   margin-bottom: to-rem($spacer-m);
