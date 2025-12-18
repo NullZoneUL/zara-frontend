@@ -1,6 +1,5 @@
 import CartItem from '.';
-import Translations from '@assets/languages/export';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 
 const mockInfo = {
   id: '1',
@@ -9,9 +8,19 @@ const mockInfo = {
   color: 'Negro',
   storage: '128GB',
   price: 999,
+  colorHex: '#000',
 };
 
 describe('CartItem', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+
   it('renders the phone information', () => {
     render(<CartItem info={mockInfo} onDelete={jest.fn()} />);
 
@@ -26,16 +35,28 @@ describe('CartItem', () => {
     expect(screen.getByText('999')).toBeInTheDocument();
   });
 
-  it('calls onDelete when delete button is clicked', () => {
+  it('calls onDelete after 500ms when delete button is clicked', () => {
     const onDeleteMock = jest.fn();
-    render(<CartItem info={mockInfo} onDelete={onDeleteMock} />);
+
+    render(
+      <ul>
+        <CartItem info={mockInfo} onDelete={onDeleteMock} />
+      </ul>,
+    );
 
     const deleteButton = screen.getByRole('button', {
-      name: Translations.delete,
+      name: /delete galaxy s24/i,
     });
+
     fireEvent.click(deleteButton);
 
+    expect(onDeleteMock).not.toHaveBeenCalled();
+
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+
     expect(onDeleteMock).toHaveBeenCalledTimes(1);
-    expect(onDeleteMock).toHaveBeenCalledWith('1');
+    expect(onDeleteMock).toHaveBeenCalledWith('1', '#000', '128GB');
   });
 });

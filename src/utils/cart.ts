@@ -19,11 +19,7 @@ export const getItemsInCart = (): { items: CartList } => {
   return items;
 };
 
-export const addItemToCart = (item: CartItem) => {
-  const jsonString = localStorage.getItem(CART_LABEL);
-  const { items } = JSON.parse(jsonString!);
-  items.push(item);
-
+export const addNewCartList = (items: CartList) => {
   localStorage.setItem(CART_LABEL, JSON.stringify({ items }));
 };
 
@@ -55,6 +51,7 @@ export const requestPhoneListInfo = async (
         storage: phone.selectedStorage,
         color: colorOption.name,
         price: storageOption.price,
+        colorHex: colorOption.hexCode,
       };
     }),
   );
