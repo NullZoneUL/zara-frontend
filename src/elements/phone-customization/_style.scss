@@ -151,6 +151,11 @@
 @media screen and (min-width: $desktopSize) {
   .phone-image-figure {
     width: 50%;
+    height: to-rem(656);
+
+    img {
+      max-height: 100%;
+    }
   }
 
   .phone-main-customization-info {
