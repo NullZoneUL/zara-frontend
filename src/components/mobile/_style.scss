@@ -7,7 +7,6 @@
     text-transform: uppercase;
     color: var(--black);
     font-size: $font-size-xxs;
-    font-weight: lighter;
     text-decoration: none;
 
     > img {
@@ -22,6 +21,11 @@
     }
   }
 
+  .phone-main-customization-container,
+  .loading-phone-info {
+    margin-top: to-rem($spacer-lg);
+  }
+
   .phone-specifications-container,
   .phone-similar-items-container {
     margin-top: to-rem($spacer-giant);
@@ -30,7 +34,6 @@
       text-transform: uppercase;
       color: var(--black);
       font-size: $font-size-l;
-      font-weight: lighter;
     }
   }
 }
@@ -60,6 +63,12 @@
 @media screen and (min-width: $desktopSize) {
   .phone-container {
     margin: to-rem(154) to-rem($spacer-giant2);
+
+    .back-container {
+      display: block;
+      position: absolute;
+      margin-top: to-rem(-154);
+    }
 
     .phone-main-customization-container {
       width: 100%;

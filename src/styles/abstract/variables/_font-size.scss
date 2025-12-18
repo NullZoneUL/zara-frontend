@@ -15,15 +15,7 @@ $font-size-xs: to-rem($size-key * 3.5); // 14
 $font-size-xxs: to-rem($size-key * 3); // 12
 $font-size-xxxs: to-rem($size-key * 2.5); // 10
 
-$font-weight-normal: 400;
-$font-weight-bold: 700;
-
 $line-height-l: 1.6;
 $line-height-m: 1.5;
 $line-height-s: 1.4;
 $line-height-xs: 1.2;
-
-$font-size-base: $font-size-s;
-$font-weight-base: $font-weight-normal;
-$line-height-base: $line-height-xs;
-$letter-spacing-base: 0;

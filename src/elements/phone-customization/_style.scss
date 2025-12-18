@@ -6,14 +6,12 @@
   h1 {
     color: var(--black);
     font-size: $font-size-l;
-    font-weight: lighter;
     text-transform: uppercase;
   }
 
   h2 {
     margin-top: to-rem($spacer-sm);
     color: var(--black);
-    font-weight: lighter;
     font-size: $font-size-xs;
 
     &::before {
@@ -33,7 +31,6 @@
     > legend {
       text-transform: uppercase;
       color: var(--black);
-      font-weight: lighter;
       font-size: $font-size-xxs;
     }
 
@@ -59,7 +56,6 @@
         cursor: pointer;
         font-family: Helvetica, Arial, sans-serif;
         font-size: $font-size-xxs;
-        font-weight: lighter;
       }
 
       &.selected-storage-option button {
@@ -102,7 +98,7 @@
 
     .selected-color-name {
       font-size: $font-size-xxs;
-      font-weight: lighter;
+
       color: var(--black);
       margin-top: to-rem($spacer-xs);
     }
@@ -114,7 +110,6 @@
     background-color: var(--black);
     text-transform: uppercase;
     font-size: $font-size-xxs;
-    font-weight: lighter;
     color: var(--white);
     padding: to-rem($spacer-md) 0;
     font-family: Helvetica, Arial, sans-serif;

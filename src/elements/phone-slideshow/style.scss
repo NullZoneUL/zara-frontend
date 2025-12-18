@@ -13,16 +13,29 @@
     padding-bottom: to-rem($spacer-3xl);
     scrollbar-color: var(--black) var(--grey-border);
 
-    &::-webkit-scrollbar {
-      width: 6px; /* ⬅️ altura de la scrollbar */
-    }
-
-    > a {
+    .phone-item-link-container {
       float: left;
       width: to-rem(280);
 
       img {
         height: to-rem(246);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $tabletSize) {
+  .phone-list-slideshow .phone-list-slideshow-overflow {
+    grid-auto-columns: to-rem(350);
+    .phone-item-link-container {
+      width: to-rem(350);
+
+      .phone-item-container {
+        width: 100%;
+
+        img {
+          height: to-rem(276);
+        }
       }
     }
   }

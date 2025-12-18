@@ -14,13 +14,15 @@ interface MobileViewProps {
 }
 
 const MobileView = ({ id }: MobileViewProps) => {
-  const [data, setData] = useState<PhoneItem>();
+  const [data, setData] = useState<PhoneItem | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getMobileInfo = async () => {
+      setData(null);
       setError(null);
+      setLoading(true);
 
       try {
         const data = await requestPhoneInfo(id);
@@ -46,7 +48,7 @@ const MobileView = ({ id }: MobileViewProps) => {
         <span>{Translations.back}</span>
       </Link>
       {loading && (
-        <p role="status" aria-live="polite">
+        <p role="status" aria-live="polite" className="loading-phone-info">
           {Translations.loading_phone_info}
         </p>
       )}
