@@ -1,5 +1,6 @@
 import Home from '@components/home';
 import MobileView from '@components/mobile';
+import CartView from '@components/cart';
 import PageNotFound from '@components/page-not-found';
 import { ReactElement } from 'react';
 import { Routes } from '@routes/pageConfig';
@@ -12,6 +13,7 @@ interface ComponentsInterface {
 const components: ComponentsInterface = {
   [Routes.index]: Home,
   [Routes.mobile]: MobileView,
+  [Routes.cart]: CartView,
   [Routes.error]: PageNotFound,
 };
 

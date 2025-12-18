@@ -24,7 +24,7 @@ const TopBar = () => {
         </Link>
         <Link
           aria-label={Translations.go_cart}
-          to={`/${Routes.index}`}
+          to={`/${Routes.cart}`}
           className="top-bar-cart"
         >
           <div>
