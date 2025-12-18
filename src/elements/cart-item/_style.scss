@@ -56,3 +56,19 @@
     margin-bottom: to-rem($spacer-xl);
   }
 }
+
+@media screen and (min-width: $tabletSize) {
+  .cart-item-container .phone-info-section button {
+    margin-bottom: to-rem($spacer-s-huge);
+  }
+}
+
+@media screen and (min-width: $desktopSize) {
+  .cart-item-container {
+    width: to-rem(548);
+
+    .phone-info-section button {
+      margin-bottom: to-rem($spacer-xxl);
+    }
+  }
+}
