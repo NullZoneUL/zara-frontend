@@ -3,8 +3,9 @@ import PhoneSpecs from '@elements/phone-specs';
 import PhoneSlideShow from '@elements/phone-slideshow';
 import Back from '@assets/images/arrow.svg';
 import Translations from '@assets/languages/export';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '@components/app';
 import { Routes } from '@routes/pageConfig';
 import { requestPhoneInfo } from '@api/client';
 import './_style.scss';
@@ -16,11 +17,21 @@ interface MobileViewProps {
 const SHOW_LOADING_TMO = 1500;
 
 const MobileView = ({ id }: MobileViewProps) => {
+  const { setItem } = useContext(CartContext);
   const [data, setData] = useState<PhoneItem | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showLoading, setShowLoading] = useState(false);
   const showLoadingTmo = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const addToCart = (selectedColor: number, selectedStorage: number) => {
+    const cartItem = {
+      id: data!.id,
+      selectedColor: data!.colorOptions[selectedColor].hexCode,
+      selectedStorage: data!.storageOptions[selectedStorage].capacity,
+    };
+    setItem(cartItem);
+  };
 
   useEffect(() => {
     const getMobileInfo = async () => {
@@ -78,10 +89,7 @@ const MobileView = ({ id }: MobileViewProps) => {
       {data && (
         <>
           <section className="phone-main-customization-container">
-            <PhoneCustomization
-              data={data}
-              addToCart={() => console.log('TODO!!!')}
-            />
+            <PhoneCustomization data={data} addToCart={addToCart} />
           </section>
           <section
             aria-labelledby="specifications-title"
