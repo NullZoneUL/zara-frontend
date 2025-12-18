@@ -3,7 +3,7 @@ import PhoneSpecs from '@elements/phone-specs';
 import PhoneSlideShow from '@elements/phone-slideshow';
 import Back from '@assets/images/arrow.svg';
 import Translations from '@assets/languages/export';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Routes } from '@routes/pageConfig';
 import { requestPhoneInfo } from '@api/client';
@@ -13,14 +13,20 @@ interface MobileViewProps {
   id: number;
 }
 
+const SHOW_LOADING_TMO = 1500;
+
 const MobileView = ({ id }: MobileViewProps) => {
-  const [data, setData] = useState<PhoneItem>();
+  const [data, setData] = useState<PhoneItem | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showLoading, setShowLoading] = useState(false);
+  const showLoadingTmo = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     const getMobileInfo = async () => {
+      setData(null);
       setError(null);
+      setLoading(true);
 
       try {
         const data = await requestPhoneInfo(id);
@@ -35,42 +41,75 @@ const MobileView = ({ id }: MobileViewProps) => {
     getMobileInfo();
   }, [id]);
 
+  // We delay the Loading message for 1.5 seconds, so we don't display it each time we access to this view
+  useEffect(() => {
+    clearTimeout(showLoadingTmo.current);
+    setShowLoading(false);
+
+    if (loading) {
+      showLoadingTmo.current = setTimeout(
+        () => setShowLoading(true),
+        SHOW_LOADING_TMO,
+      );
+    }
+    return () => {
+      clearTimeout(showLoadingTmo.current);
+    };
+  }, [loading]);
+
   return (
-    <section aria-label={Translations.phone_info} className="phone-container">
-      <Link
-        aria-label={Translations.back}
-        to={`/${Routes.index}`}
-        className="back-container"
-      >
-        <img src={Back} alt="" />
-        <span>{Translations.back}</span>
-      </Link>
-      {loading && (
-        <p role="status" aria-live="polite">
+    <section
+      aria-label={Translations.phone_info}
+      aria-busy={loading}
+      className="phone-container"
+    >
+      <nav aria-label={Translations.back}>
+        <Link to={`/${Routes.index}`} className="back-container">
+          <img src={Back} alt="" />
+          <span>{Translations.back}</span>
+        </Link>
+      </nav>
+      {showLoading && (
+        <p role="status" aria-live="polite" className="loading-phone-info">
           {Translations.loading_phone_info}
         </p>
       )}
       {error && <p role="alert">{error}</p>}
       {data && (
         <>
-          <div className="phone-main-customization-container">
+          <section className="phone-main-customization-container">
             <PhoneCustomization
               data={data}
               addToCart={() => console.log('TODO!!!')}
             />
-          </div>
-          <div className="phone-specifications-container">
-            <h1>{Translations.specifications}</h1>
+          </section>
+          <section
+            aria-labelledby="specifications-title"
+            className="phone-specifications-container"
+          >
+            <h1 id="specifications-title">{Translations.specifications}</h1>
             <PhoneSpecs
               specs={data.specs}
               name={data.name}
               brand={data.brand}
               description={data.description}
             />
-          </div>
-          <div className="phone-similar-items-container">
-            <h1>{Translations.similar_items}</h1>
+          </section>
+          <section
+            aria-labelledby="similar-items-title"
+            className="phone-similar-items-container"
+          >
+            <h1 id="similar-items-title">{Translations.similar_items}</h1>
             <PhoneSlideShow data={data.similarProducts} />
+          </section>
+          <div aria-hidden="true" className="preload-images">
+            {data.colorOptions?.map(item => (
+              <img
+                src={item.imageUrl}
+                alt=""
+                key={`IMAGE_PRELOAD_${item.hexCode}`}
+              />
+            ))}
           </div>
         </>
       )}

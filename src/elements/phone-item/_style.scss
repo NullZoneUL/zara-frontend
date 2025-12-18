@@ -19,7 +19,6 @@
       h3 {
         color: var(--grey);
         font-size: $font-size-xxxs;
-        font-weight: lighter;
       }
 
       .phone-name-price {
@@ -31,7 +30,6 @@
           color: var(--black);
           display: inline-block;
           font-size: $font-size-xxs;
-          font-weight: lighter;
 
           &.phone-price {
             position: absolute;
