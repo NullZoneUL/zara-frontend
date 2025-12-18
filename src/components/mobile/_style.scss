@@ -36,6 +36,16 @@
       font-size: $font-size-l;
     }
   }
+
+  .preload-images {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+
+    > img {
+      width: 1px;
+    }
+  }
 }
 
 @media screen and (min-width: $tabletSize) {
