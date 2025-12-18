@@ -34,5 +34,6 @@
     "name": "Name",
     "description": "Description"
   },
-  "similar_items": "Similar items"
+  "similar_items": "Similar items",
+  "cart_request_error": "There was an error trying to retrieve cart information. Check your .env variables."
 }
