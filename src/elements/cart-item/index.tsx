@@ -15,6 +15,7 @@ const CartItem = ({ info, onDelete }: CartItemProps) => {
 
   const onClick = () => {
     ref.current!.style.maxHeight = '0';
+    ref.current!.style.marginBottom = '0';
 
     setTimeout(() => {
       onDelete(id, colorHex, storage);

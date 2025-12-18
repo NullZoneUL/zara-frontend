@@ -3,6 +3,7 @@ import PhoneItem from '@elements/phone-item';
 import Translations from '@assets/languages/export';
 import { useCallback, useEffect, useState } from 'react';
 import { requestPhoneList } from '@api/client';
+import { useDelayedLoading } from '@utils/delay-custom-hook/delay';
 import './_style.scss';
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState('');
+  const showLoading = useDelayedLoading(loading);
 
   const onSeachInput = useCallback((text: string) => setSearchValue(text), []);
 
@@ -39,7 +41,7 @@ const Home = () => {
         aria-label={Translations.phone_list}
         className="phone-list-container"
       >
-        {loading && (
+        {showLoading && (
           <p role="status" aria-live="polite">
             {Translations.loading_phone_list}
           </p>

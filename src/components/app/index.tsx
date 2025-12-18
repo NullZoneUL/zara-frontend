@@ -1,7 +1,7 @@
 import TopBar from '@elements/top-bar';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
-import { getItemsInCart, addNewCartList } from '@utils/cart';
+import { getItemsInCart, addNewCartList } from '@utils/cart/cart';
 import './_style.scss';
 
 interface AppInterface {
@@ -19,7 +19,7 @@ export const CartContext = createContext<{
 });
 
 const App = ({ children }: AppInterface) => {
-  const [cartList, setCartList] = useState<CartList>([]);
+  const [cartList, setCartList] = useState<CartList>(getItemsInCart());
 
   const setNewItemCartList = (item: CartItem) => {
     setCartList([...cartList, item]);
@@ -47,11 +47,6 @@ const App = ({ children }: AppInterface) => {
   useEffect(() => {
     addNewCartList(cartList);
   }, [cartList]);
-
-  useEffect(() => {
-    const { items } = getItemsInCart();
-    setCartList(items);
-  }, []);
 
   return (
     <CartContext.Provider

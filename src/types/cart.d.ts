@@ -4,6 +4,7 @@ declare interface CartItem {
   id: string;
   selectedColor: string;
   selectedStorage: string;
+  timestamp: number;
 }
 
 declare interface ParsedCartItemInterface {
@@ -14,4 +15,5 @@ declare interface ParsedCartItemInterface {
   color: string;
   price: number;
   colorHex: string;
+  timestamp: number;
 }
