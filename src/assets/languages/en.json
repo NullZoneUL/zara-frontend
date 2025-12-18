@@ -10,11 +10,13 @@
   "price": "Price",
   "loading_phone_list": "Loading phone list...",
   "loading_phone_info": "Loading phone info...",
+  "loading_cart_info": "Loading cart info...",
   "phone_list": "Phone list",
   "search_placeholder": "Search for a smartphone...",
   "clean_search": "Clean search input",
   "results": "Results",
   "phone_request_error": "There was an error trying to retrieve the phone information. Check your .env variables.",
+  "cart_request_error": "There was an error trying to retrieve cart information. Check your .env variables.",
   "phone_info": "Phone information",
   "back": "Back",
   "storage_question": "Storage. How much space do you need?",
@@ -35,5 +37,9 @@
     "description": "Description"
   },
   "similar_items": "Similar items",
-  "cart_request_error": "There was an error trying to retrieve cart information. Check your .env variables."
+  "total": "Total",
+  "total_price": "Total price",
+  "continue_shopping": "Continue shopping",
+  "pay": "Pay",
+  "delete": "Delete"
 }

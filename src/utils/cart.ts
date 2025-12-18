@@ -29,8 +29,12 @@ export const addItemToCart = (item: CartItem) => {
 
 export const requestPhoneListInfo = async (
   items: CartList,
-): Promise<(ParsedCartItemInterface | null)[]> => {
-  const cartItemList_ = await Promise.all(
+): Promise<{
+  items: (ParsedCartItemInterface | null)[];
+  totalPrice: number;
+}> => {
+  let totalPrice = 0;
+  const cartItemList = await Promise.all(
     items.map(async phone => {
       const info = await requestPhoneInfo(phone.id);
 
@@ -42,6 +46,7 @@ export const requestPhoneListInfo = async (
       );
 
       if (!colorOption || !storageOption) return null;
+      totalPrice += storageOption.price;
 
       return {
         id: phone.id,
@@ -54,5 +59,5 @@ export const requestPhoneListInfo = async (
     }),
   );
 
-  return cartItemList_;
+  return { items: cartItemList, totalPrice };
 };

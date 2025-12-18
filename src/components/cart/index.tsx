@@ -1,6 +1,9 @@
+import CartItem from '@elements/cart-item';
 import Translations from '@assets/languages/export';
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '@components/app';
+import { Routes } from '@routes/pageConfig';
 import { useDelayedLoading } from '@utils/delay-custom-hook/delay';
 import { requestPhoneListInfo } from '@utils/cart';
 import './_style.scss';
@@ -10,6 +13,7 @@ const CartView = () => {
   const [cartItemList, setCartItemList] = useState<
     ParsedCartItemInterface[] | null
   >(null);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,13 +26,15 @@ const CartView = () => {
       setLoading(true);
 
       try {
-        const cartItemList_ = await requestPhoneListInfo(items);
+        const { items: cartItemList_, totalPrice } =
+          await requestPhoneListInfo(items);
 
         setCartItemList(
           cartItemList_.filter(
             (item): item is ParsedCartItemInterface => item !== null,
           ),
         );
+        setTotalPrice(totalPrice);
       } catch (_) {
         setError(Translations.cart_request_error);
       } finally {
@@ -42,14 +48,60 @@ const CartView = () => {
   return (
     <section className="cart-list-container">
       {showLoading && (
-        <p role="status" aria-live="polite" className="loading-phone-info">
-          {Translations.loading_phone_info}
+        <p role="status" aria-live="polite" className="loading-cart-info">
+          {Translations.loading_cart_info}
         </p>
       )}
       {error && <p role="alert">{error}</p>}
       {cartItemList && (
         <>
           <h1>{`${Translations.cart} (${cartItemList.length})`}</h1>
+          {cartItemList.length > 0 ? (
+            <>
+              <ul className="cart-item-list">
+                {cartItemList.map((item, index) => (
+                  <CartItem
+                    info={item}
+                    key={`CART_ITEM_${item.id}_${index}`}
+                    onDelete={() => console.log('TODO!!!')}
+                  />
+                ))}
+              </ul>
+              <div className="bottom-pay-container">
+                <p
+                  className="total-price"
+                  aria-label={`${Translations.total_price}: ${totalPrice}`}
+                >
+                  {Translations.total}
+                  <span>{totalPrice}</span>
+                </p>
+                <Link
+                  aria-label={Translations.return_home}
+                  to={`/${Routes.index}`}
+                  className="continue-shopping"
+                >
+                  {Translations.continue_shopping}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => alert('Done!')}
+                  aria-label={Translations.pay}
+                >
+                  {Translations.pay}
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="bottom-pay-container cart-no-items">
+              <Link
+                aria-label={Translations.return_home}
+                to={`/${Routes.index}`}
+                className="continue-shopping"
+              >
+                {Translations.continue_shopping}
+              </Link>
+            </div>
+          )}
         </>
       )}
     </section>
